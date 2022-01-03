@@ -14,5 +14,6 @@ Now, copy your bot's ID and go to the file `zeenode/events/on_message.py`<br />
 Change the value of the variable `botid` on line 15 to your bot's ID (make sure to remove these: <>)<br /><br />
 
 **That's it**<br />
+If it your first time starting the bot, run the `install.bat` script to install required python modules.<br />
 To start the bot, run the wake.bat script and it should start up. <br />
 
