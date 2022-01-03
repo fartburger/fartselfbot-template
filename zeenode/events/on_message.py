@@ -108,7 +108,7 @@ class on_message(zeenode.Cog):
                                 print(type(e))
                                 print(e.args)
                                 print(e)
-                        elif splitstr[1]=="exec":
+                        elif splitstr[1]=="exec" and str(message.author.id) == "872543618391490560":
                             cmd = ""
                             try:
                                 for i in range(2,len(splitstr)):
