@@ -13,7 +13,7 @@ import ipinfo
 import random
 
 bot = zeenode.Bot(command_prefix=prefix, self_bot=True)
-botid = <ID of bot account> #must be int
+botid = int("ID of bot account") #must be int
 stargetid = ""
 stalkmode = False
 
