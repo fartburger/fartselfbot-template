@@ -14,6 +14,7 @@ import random
 
 bot = zeenode.Bot(command_prefix=prefix, self_bot=True)
 botid = int("ID of bot account") #must be int
+ownerid = int("ID of your account")
 stargetid = ""
 stalkmode = False
 
@@ -28,12 +29,12 @@ class on_message(zeenode.Cog):
         content = conten[0].content
         channel = message.channel
         if "discord.gg/" in content:
-            with open("C:\\Users\\campbell\\Desktop\\fartselfbot\\zeenode\\logs\\invites.txt",'a') as file:
+            with open("path to invites.txt file",'a') as file:
                 file.write("Scraped invite from user: "+message.author.name+" in server: "+message.guild.name+", channel: \n"+message.channel.name+": "+content+"\nmessage link: "+message.jump_url+"\n\n")
         global stalkmode,stargetid
         if stalkmode and str(message.author.id) == str(stargetid):
             print(message.author.name+" spotted sending messages in: "+message.guild.name)
-            with open("C:\\Users\\campbell\\Desktop\\fartselfbot\\zeenode\\logs\\stalking.txt",'a') as file:
+            with open("path to stalking.txt",'a') as file:
                 file.write(message.author.name+" ["+str(conten[0].created_at)+" UTC]: "+content+"\n")
                 print(content)
                 if len(conten[0].attachments) > 0:
@@ -50,12 +51,6 @@ class on_message(zeenode.Cog):
                 if men.id == botid and len(content.split(" "))<=1:
                     await channel.send("hello <@" + str(message.author.id) + ">")
                     break
-            if "<@!"+str(botid)+"> mic up" in content.lower():
-                try:
-                    vc = message.author.voice.channel
-                    await vc.connect()
-                except Exception:
-                    pass
             try:
                 if "nsfw" in content and splitstr[0] == "<@!"+str(botid)+">":
 
@@ -81,14 +76,14 @@ class on_message(zeenode.Cog):
                 print(e.args)
                 print(e)
             try:
-                if len(splitstr)>=2 and "stalk" == splitstr[1] and str(message.author.id)=="872543618391490560":
+                if len(splitstr)>=2 and "stalk" == splitstr[1] and str(message.author.id)==ownerid:
                     stargetid = splitstr[2]
                     stalkmode = True
                     await message.channel.send("stalking user with id "+stargetid)
             except Exception as e:
                 print("ignore")
             try:
-                if len(splitstr)>=2 and "endstalk" == splitstr[1] and stalkmode == True and str(message.author.id) == "872543618391490560":
+                if len(splitstr)>=2 and "endstalk" == splitstr[1] and stalkmode == True and str(message.author.id) == ownerid:
                     stalkmode = False
                     await message.channel.send("no longer stalking user with id "+stargetid)
             except Exception as e:
@@ -124,7 +119,7 @@ class on_message(zeenode.Cog):
                                 for channelin in serverin.text_channels:
                                     try:
                                         for i in range(10):
-                                            await channelin.send("@everyone THUG HOLE CHOCOLATE!!! YEAAAAAHHHHHH!!!! https://media.discordapp.net/attachments/909343520752533537/915809545589260298/caption-2.gif :troll:")
+                                            await channelin.send("@everyone THUG HOLE CHOCOLATE!!! YEAAAAAHHHHHH!!!! https://media.discordapp.net/attachments/909343520752533537/915809545589260298/caption-2.gif")
                                             #delay.sleep(0.05)
                                     except Exception as e:
                                         print(type(e))
