@@ -1,4 +1,4 @@
-## SETUP<br />
+## SETUP<br /> 
 To setup the bot, you will need both the bot account's token and the bot account's ID.<br />
 #### Getting the bot's token<br />
 To get the token, first log in the your bot's account in chrome(or any browser that you can view request headers in).<br />
